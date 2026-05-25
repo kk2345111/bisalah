@@ -212,7 +212,8 @@ class MasterNode(Node):
         # ── SATU timer callback — ini jantung dari master_node ───
         self._timer = self.create_timer(self.dt, self._main_loop)
 
-        self.get_logger().info(
+        self.get_logger().info (
+            (
             '\n' + '=' * 60 + '\n'
             '  MASTER NODE — Simulasi JetBot (Single Node)\n'
             '  Trajectory: k=%.2f  omega=%.3f  T=%.1f s\n'
@@ -221,14 +222,15 @@ class MasterNode(Node):
             '  UDP send  : %s:%d\n'
             '  Log CSV   : %s\n'
             '  sim_type  : %d (0=KBBC Only, 1=KBBC+PID)\n'
-            + '=' * 60 % (
+            + '=' * 60 ) % (
                 scale_k, omega, self._traj.period,
                 Kx, Ky, Ktheta, Kdirect,
                 lport,
                 send_ip, sport,
                 self._fname,
                 self.sim_type,
-            ))
+            )
+        )
 
     # ── Subscriber callback untuk RESET/STOP manual ──────────────
     def _cb_ctrl(self, msg):
